@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Anker 737 Power Bank",
+    "price": "19,990円",
+    "discountRate": "10%",
+    "catchphrase": "24000mAhの超大容量！MacBookも急速充電できる最強モバイルバッテリー。",
+    "rakutenSearchUrl": "https://search.rakuten.co.jp/search/mall/Anker+737+Power+Bank/",
+    "amazonSearchKeyword": "Anker 737 Power Bank",
+    "context": "カフェでのドヤリングに最適。重いのが欠点だが安心感は異常。"
+  },
+  {
+    "name": "CIO NovaPort TRIO 65W",
+    "price": "6,578円",
+    "discountRate": null,
+    "catchphrase": "世界最小級！卵サイズの3ポート充電器。",
+    "rakutenSearchUrl": "https://search.rakuten.co.jp/search/mall/CIO+NovaPort+TRIO+65W/",
+    "amazonSearchKeyword": "CIO NovaPort TRIO 65W",
+    "context": "純正充電器を使ってる人は人生損してる。これ一つでスマホもPCもイヤホンも全部いける。"
+  },
+  {
+    "name": "Sony WF-1000XM5",
+    "price": "41,800円",
+    "discountRate": "8%",
+    "catchphrase": "静寂を持ち歩く。世界最高ノイキャンで電車もカフェも無音空間に。",
+    "rakutenSearchUrl": "https://search.rakuten.co.jp/search/mall/WF-1000XM5/",
+    "amazonSearchKeyword": "WF-1000XM5",
+    "context": "高いけど元は取れる。耳栓代わりにもなるし、集中力が段違い。"
+  },
+  {
+    "name": "Logicool MX Master 3S",
+    "price": "16,900円",
+    "discountRate": "5%",
+    "catchphrase": "作業効率爆上がり！クリエイター必須の神マウス。",
+    "rakutenSearchUrl": "https://search.rakuten.co.jp/search/mall/MX+Master+3S/",
+    "amazonSearchKeyword": "MX Master 3S",
+    "context": "一度使うと他のマウスに戻れない体になる。静音クリックの感触が気持ちよすぎて無限に押せる。"
+  },
+  {
+    "name": "UGREEN Nexode 100W",
+    "price": "7,980円",
+    "discountRate": "20%",
+    "catchphrase": "デスク周りがスッキリ！4ポート搭載の卓上充電ステーション。",
+    "rakutenSearchUrl": "https://search.rakuten.co.jp/search/mall/UGREEN+Nexode+100W/",
+    "amazonSearchKeyword": "UGREEN Nexode 100W",
+    "context": "コスパのUGREEN。Ankerより安いのに性能は互角以上。デスクの配線整理に悩む全人類におすすめ。"
+  }
+]
