@@ -1,0 +1,8 @@
+// .gitignore
+node_modules/
+*.env
+*.txt
+.DS_Store
+logs/
+remotion-video/
+canvas/
