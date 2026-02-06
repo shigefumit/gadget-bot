@@ -37,4 +37,4 @@ jobs:
           RAKUTEN_AFFILIATE_ID: ${{ secrets.RAKUTEN_AFFILIATE_ID }}
           AMAZON_TRACKING_ID: ${{ secrets.AMAZON_TRACKING_ID }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: node gadget_bot_v4.js
+        run: node gadget_bot_v5.js

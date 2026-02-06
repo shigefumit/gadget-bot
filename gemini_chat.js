@@ -1,70 +1,38 @@
 // gemini_chat.js
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
+// 通常のコメント生成（フォールバック用）
 async function generateComment(productName, context) {
-  if (!process.env.GEMINI_API_KEY) {
-    console.warn("⚠️ GEMINI_API_KEY is missing. Using fallback comment.");
-    return context; // Fallback to static context
-  }
+  if (!process.env.GEMINI_API_KEY) return context;
 
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   const prompt = `
-  あなたはガジェット好きの毒舌レビュアーです。
-  以下の商品について、Twitter（X）で投稿するための「短くて人間味のある、少し毒舌または本音の感想」を140文字以内で作成してください。
-  
-  商品名: ${productName}
-  事前情報: ${context}
-  
-  条件:
-  - 宣伝っぽさを消す
-  - 「〜です」「〜ます」ではなく「〜だ」「〜である」や口語体を使う
-  - 買うべきか、買わないべきか、誰に向いているかをハッキリ言う
-  - 絵文字は1つか2つまで
-  - ハッシュタグは不要
-  - 引用符などで囲わず、テキストだけを出力すること
+  ガジェット商品「${productName}」について、Twitter投稿用の短くパンチの効いた紹介文を書いて。
+  文脈: ${context}
+  条件: 100文字以内、絵文字少なめ、断定口調。
   `;
-
+  
   try {
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    let text = response.text();
-    return text.trim();
-  } catch (error) {
-    console.error("Gemini API Error:", error);
-    return context; // Error fallback
+    const res = await model.generateContent(prompt);
+    return res.response.text().trim();
+  } catch (e) {
+    return context;
   }
 }
 
-async function generateReply(replyText) {
-    if (!process.env.GEMINI_API_KEY) return null;
+// 比較・分析コメントのフォーマット生成
+function formatProReview(trendData) {
+    const pros = trendData.pros.map(p => `✅ ${p}`).join('\n');
+    const cons = trendData.cons.map(c => `⚠️ ${c}`).join('\n');
+    
+    return `${trendData.reviewSummary}
 
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+${pros}
+${cons}
 
-    const prompt = `
-    あなたはガジェット情報のBotアカウントを運営していますが、中身はガジェットオタクの人間として振る舞っています。
-    ユーザーからの以下のリプライに対して、即レスするような短くてフレンドリーな返信を書いてください。
-
-    ユーザーのリプライ: "${replyText}"
-
-    条件:
-    - 敬語は崩してOK（フレンドリーに）
-    - 質問には簡潔に答える
-    - 共感する
-    - 60文字以内
-    - ハッシュタグ不要
-    `;
-
-    try {
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        return response.text().trim();
-    } catch (error) {
-        console.error("Gemini Reply Error:", error);
-        return null;
-    }
+💰 ${trendData.priceComment}`;
 }
 
-module.exports = { generateComment, generateReply };
+module.exports = { generateComment, formatProReview };
